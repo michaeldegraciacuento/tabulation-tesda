@@ -11,7 +11,9 @@ Route::group(['middleware' => ['auth']],function() {
     Route::group(['middleware' => ['role:admin']],function() { 
 
         Route::group(['middleware' => ['role:admin']],function() { 
-            Route::resource('users','UsersController');                
+            Route::resource('users','UsersController'); 
+            Route::resource('program','ProgramController');
+            Route::resource('qualification','QualificationController');              
         });
     });  
     Route::get('/colors', function () {     return view('dashboard.colors'); });

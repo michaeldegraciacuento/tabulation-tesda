@@ -7,9 +7,12 @@
         <div class="col-md-5">
           <div class="card-group">
             <div class="card p-4">
+            <div class="card-header" style="background-image: url('{{ asset('assets/img/skills.jpg')}}');background-repeat: no-repeat;height: 10rem; background-size: 100% 100%;">
+                
+                </div>
               <div class="card-body">
-                <h1 class="text-center">Login</h1>
-                <p class="text-muted text-center">Sign In to your account</p>
+              <h5 class="text-center">Login / Sign In to your account</h5>
+                <p class="text-muted text-center"></p>
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="input-group mb-3">
@@ -33,12 +36,12 @@
                     <input class="form-control" type="password" placeholder="{{ __('Password') }}" name="password" required>
                     </div>
                     <div class="row">
-                    <div class="col-6">
+                    <div class="col-4">
                         <button class="btn btn-primary px-4" type="submit">{{ __('Login') }}</button>
                     </div>
                     </form>
-                    <div class="col-6 text-right">
-                        <a href="{{ route('password.request') }}" class="btn btn-link px-0">{{ __('Forgot Your Password?') }}</a>
+                    <div class="col-8 text-right">
+                        <a href="http://ict.rtciligan.com" class="btn btn-link px-0">{{ __('© ICT RTC-ILIGAN') }}</a>
                     </div>
                     </div>
               </div>

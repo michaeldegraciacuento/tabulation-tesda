@@ -69,9 +69,9 @@
       @include('dashboard.shared.sidebar')
       @include('dashboard.shared.header')
 
-      <div class="c-body">
-
-        <main class="c-main">
+      <div class="c-body" >
+      <!-- style="background-image: url('assets/img/home.jpg');background-position: center;width: auto;height: 100%; display: block;" -->
+        <main class="c-main" >
           @include('messages')
           
           @yield('content') 

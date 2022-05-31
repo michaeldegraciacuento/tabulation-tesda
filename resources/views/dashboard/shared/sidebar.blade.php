@@ -10,11 +10,34 @@
       Dashboard
     </a>
   </li>
-
+  <li class="c-sidebar-nav-item">
+    <a class="c-sidebar-nav-link" href="{{ route('program.index') }}">
+      <i class="cil-align-left c-sidebar-nav-icon"></i>
+      Program
+    </a>
+  </li>
+  <li class="c-sidebar-nav-item">
+    <a class="c-sidebar-nav-link" href="{{ route('qualification.index') }}">
+      <i class="cil-featured-playlist c-sidebar-nav-icon"></i>
+      Qualification
+    </a>
+  </li>
   <li class="c-sidebar-nav-item">
     <a class="c-sidebar-nav-link" href="">
-      <i class="cil-paper-plane c-sidebar-nav-icon"></i>
-      Qualification
+      <i class="cil-library-building c-sidebar-nav-icon"></i>
+      Institution
+    </a>
+  </li>
+  <li class="c-sidebar-nav-item">
+    <a class="c-sidebar-nav-link" href="">
+      <i class="cil-contact c-sidebar-nav-icon"></i>
+      Contestant
+    </a>
+  </li>
+  <li class="c-sidebar-nav-item">
+    <a class="c-sidebar-nav-link" href="">
+      <i class="cil-bar-chart c-sidebar-nav-icon"></i>
+      Ranking
     </a>
   </li>
 

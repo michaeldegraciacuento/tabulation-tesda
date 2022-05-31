@@ -21,16 +21,22 @@
 </div>
 <div class="container-fluid">
     <div class="card">
-        <div class="card-header" style="background-image: url('assets/img/vgd.png');width: 100%;height: 90px; margin-left: auto;margin-right: auto; display: block;">
-            <div class="card mt-3" style="height:30px; opacity: 0.9;">
-                <strong style="font-size:12px;" class="mt-1"><strong style="color:ffffff;">VISUAL GRAPHICS DESIGN </strong><span class="badge badge-danger float-right px-0" style="width:40px;">Ongoing</span><h6 class="float-right" style="font-size:12px;">Status:</h6></strong> 
+            <div class="card-header" style="background-image: url('assets/img/vgd.png');width: 100%;height: 90px; margin-left: auto;margin-right: auto; display: block;">
+                <div class="card mt-3" style="height:30px; opacity: 0.9;">
+                    <strong style="font-size:15px;" class="mt-1 text-center"><strong style="color:ffffff;">VISUAL GRAPHICS DESIGN</strong></strong> 
+                </div>
             </div>
-        </div>
-            <div class="card-body" style="height: 50px !important;">
+            <div class="row justify-content-end pt-1" >
+                <div class="col-11">
+                    <h6 class="float-right" style="font-size:12px;">Status: &nbsp;<span class="badge badge-danger float-right px-0" style="width:40px;">Ongoing</span></h6>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <div class="card-body pt-0" style="height: 40px !important;">
                 <div class="d-flex justify-content-around">
                     Contestant:<strong>11</strong>Judge:<strong>14</strong>Expert:<strong>14</strong>
                 </div>
-        </div>
+            </div>
     </div>
     <div class="card">
         <div class="accordion" id="accordion" role="tablist">
