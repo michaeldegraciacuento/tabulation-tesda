@@ -13,7 +13,9 @@ Route::group(['middleware' => ['auth']],function() {
         Route::group(['middleware' => ['role:admin']],function() { 
             Route::resource('users','UsersController'); 
             Route::resource('program','ProgramController');
-            Route::resource('qualification','QualificationController');              
+            Route::resource('qualification','QualificationController');   
+            Route::resource('institution','InstitutionController'); 
+            Route::resource('contestant','ContestantController');               
         });
     });  
     Route::get('/colors', function () {     return view('dashboard.colors'); });

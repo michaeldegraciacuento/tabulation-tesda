@@ -41,7 +41,7 @@
                                         <tr>
                                             <td>{{ $loop->iteration ?? '' }}</td>
                                             <td>
-                                                <img src="{{asset('public/'.$qualis->quali_image) }}" width="70" height="70"alt="image"  align="left">
+                                                <img src="{{asset('public/'.$qualis->image) }}" width="150" height="70"alt="image"  align="left">
                                             </td>
                                             <td>{{ $qualis->quali_name ?? '' }}</td>
                                             <td></td>

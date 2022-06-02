@@ -74,7 +74,7 @@ class QualificationController extends Controller
      */
     public function edit(Qualification $qualification)
     {
-        //
+        return view('qualification._update',compact('qualification'));
     }
 
     /**
@@ -86,7 +86,21 @@ class QualificationController extends Controller
      */
     public function update(Request $request, Qualification $qualification)
     {
-        //
+        $validated = $request->validate([
+            'quali_name' => '',
+        ]);
+        $quali = new Qualification();
+        $quali->quali_name=$request->quali_name;
+        if( $request->file('image') != null){
+            $picture = $request->file('image');
+            $fileName = time() . '.' . $picture->getClientOriginalExtension();
+            $img = Image::make($picture->getRealPath());
+            $img->stream();
+            $url = Storage::disk('public')->put('uploads/qualification', $picture);
+            $quali->image = $url;
+        }
+        $quali->update();
+        return redirect()->back()->with('success','Successfully Created Qualification!!');
     }
 
     /**
@@ -97,6 +111,7 @@ class QualificationController extends Controller
      */
     public function destroy(Qualification $qualification)
     {
-        //
+        $qualification->delete();
+        return redirect()->back()->with('deleted','Qualification deleted successfully!!');
     }
 }

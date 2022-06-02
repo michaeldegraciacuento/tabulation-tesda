@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-use App\Models\{User};
+use App\Models\{User,Qualification,Institution};
 use DB;
 
 class UsersController extends Controller
@@ -12,9 +12,15 @@ class UsersController extends Controller
     public function index()
     {
         $you = auth()->user();
-        $users = User::with('roles')->where('id','!=',1)->get();
-        $roles = DB::table('roles')->where('id','!=',2)->get();
-        return view('dashboard.admin.usersList', compact('users', 'you', 'roles'));
+        $users = User::join('qualifications','qualifications.id','users.quali_id')
+                        ->join('institutions','institutions.id','users.tti_id')
+                        ->select('institutions.tti_abrv','qualifications.quali_name','users.name','users.email')
+                      
+                        ->get();
+        $roles = DB::table('roles')->get();
+        $quali=Qualification::get();
+        $tti=Institution::get();
+        return view('dashboard.admin.usersList', compact('users', 'you', 'roles','tti','quali'));
     }
 
     public function store(Request $request)
@@ -28,9 +34,11 @@ class UsersController extends Controller
         $user->name       = $request->input('name');
         $user->email      = $request->input('email');
         $user->password = Hash::make($request->input('password'));
+        $user->tti_id = $request->tti_id;
+        $user->quali_id = $request->quali_id;
         $user->save();
 
-        $user->assignRole('user');
+        // $user->assignRole('user');
         $user->assignRole($request->role);
         
         return redirect()->back()->with('success','User added successfully!');

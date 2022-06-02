@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Institution;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image as Image;
 
 class InstitutionController extends Controller
 {
@@ -14,7 +16,8 @@ class InstitutionController extends Controller
      */
     public function index()
     {
-        //
+        $abrv = Institution::get(); 
+        return view('institution.index', compact('abrv'));
     }
 
     /**
@@ -35,7 +38,23 @@ class InstitutionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'tti_name' => 'required',
+            'tti_abrv' => 'required',
+        ]);
+        $abrv = new Institution();
+        $abrv->tti_name=$request->tti_name;
+        $abrv->tti_abrv=$request->tti_abrv;
+        if( $request->file('tti_image') != null){
+            $picture = $request->file('tti_image');
+            $fileName = time() . '.' . $picture->getClientOriginalExtension();
+            $img = Image::make($picture->getRealPath());
+            $img->stream();
+            $url = Storage::disk('public')->put('uploads/institution', $picture);
+            $abrv->tti_image = $url;
+        }
+        $abrv->save();
+        return redirect()->back()->with('success','Successfully Created Institution!!');
     }
 
     /**
@@ -80,6 +99,7 @@ class InstitutionController extends Controller
      */
     public function destroy(Institution $institution)
     {
-        //
+        $institution->delete();
+        return redirect()->back()->with('deleted','Institution deleted successfully!!');
     }
 }

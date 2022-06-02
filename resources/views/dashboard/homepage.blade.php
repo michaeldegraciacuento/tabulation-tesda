@@ -39,102 +39,35 @@
             </div>
     </div>
     <div class="card">
-        <div class="accordion" id="accordion" role="tablist">
-        <div class="card mb-0">
-            <div class="card-header" id="headingOne" role="tab">
-            <h5 class="mb-0">
-                <div class="row">
-                    <div class="col-2">
-                        <img src="{{ asset('assets/img/rtciligan.png') }}" width="45" height="40" alt="logo">
-                    </div>
-                    <div class="col-8">
-                        <a data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                        Regional Training Center- Iligan
-                        </a>
-                    </div>
-                    <div class="col-2 p-0 align-self-end">
-                        <div class="row mb-2"><span class="badge badge-success float-right " style="font-size:10px;">Complete</span></div>
-                        <div class="row"><h6 class="mt-auto bd-highlight float-right" style="font-size:10px;">RTC-Iligan</h6></div>
-                    </div>
-                </div>
-            </h5>
-            </div>
-            <div class="collapse" id="collapseOne" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-2"><img src="{{ asset('assets/img/sample.jpg') }}" width="45" height="40" alt="logo"></div>
-                        <div class="col-8 ml-3">
-                            <div class="row ml-0">
-                               Name: <strong> Michael G. Cuento</strong>
+            <div class="card mb-0">
+                <div class="card-header contestant" data-url="">
+                    <h5 class="mb-0">
+                        <div class="row">
+                            <div class="col-2">
+                                <img src="{{ asset('assets/img/rtciligan.png') }}" width="45" height="40" alt="logo">
                             </div>
-                            <div class="row">
-                                <div class="col-5"> Age: <strong> 24</strong></div>
-                                <div class="col-7"> Gender: <strong> Male</strong></div>
+                            <div class="col-8">
+                                <a>
+                                Regional Training Center- Iligan
+                                </a>
+                            </div>
+                            <div class="col-2 p-0 align-self-end">
+                                <div class="row mb-2"><span class="badge badge-success float-right " style="font-size:10px;">Complete</span></div>
+                                <div class="row"><h6 class="mt-auto bd-highlight float-right" style="font-size:10px;">RTC-Iligan</h6></div>
                             </div>
                         </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-2"><img src="{{ asset('assets/img/sample.jpg') }}" width="45" height="40" alt="logo"></div>
-                        <div class="col-8 ml-3">
-                            <div class="row ml-0">
-                               Name: <strong> Michael G. Cuento</strong>
-                            </div>
-                            <div class="row">
-                                <div class="col-5"> Age: <strong> 24</strong></div>
-                                <div class="col-7"> Gender: <strong> Male</strong></div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <button class="btn btn-block btn-info btn-sm float-right mb-2" type="button" data-toggle="modal" data-target="#exampleModal" style="width: 80px !important;">View Score</button>
+                    </h5>
                 </div>
-            </div>
-        </div>
-        <div class="card mb-0">
-       
-            <div class="card-header" id="headingTwo" role="tab">
-            <h5 class="mb-0">
-            <div class="row">
-                    <div class="col-2">
-                        <img src="{{ asset('assets/img/lnnais.jfif') }}" width="45" height="40" alt="logo">
-                    </div>
-                    <div class="col-8">
-                        <a data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Lanao Norte National Agro-Industrial School
-                        </a>
-                    </div>
-                    <div class="col-2 p-0 align-self-end">
-                        <div class="row mb-2"><span class="badge badge-danger float-right " style="font-size:10px;">Ongoing</span></div>
-                        <div class="row"><h6 class="mt-auto bd-highlight float-right" style="font-size:10px;">LNNAIS</h6></div>
-                    </div>
-                </div>
-            </h5>
-            </div>
-            <div class="collapse" id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-            <div class="card-body">
-            <div class="row">
-                        <div class="col-2"><img src="{{ asset('assets/img/sample.jpg') }}" width="45" height="40" alt="logo"></div>
-                        <div class="col-8 ml-3">
-                            <div class="row ml-0">
-                               Name: <strong> Michael G. Cuento</strong>
-                            </div>
-                            <div class="row">
-                                <div class="col-5"> Age: <strong> 24</strong></div>
-                                <div class="col-7"> Gender: <strong> Male</strong></div>
-                            </div>
-                            
-                           
-                        </div>
-                       
-                    </div>
-                    <hr>
-                 <button class="btn btn-block btn-info btn-sm float-right mb-2" type="button" style="width: 60px !important;">Score</button>
-            </div>
-        </div>       
+                <!-- append start -->
+                <div class="append-contestant"></div>
+                <!-- append end -->
+            </div>  
     </div>
           
 </div>
+
+
+
 
 @endsection
 
@@ -143,4 +76,24 @@
     <script src="{{ asset('js/Chart.min.js') }}"></script>
     <script src="{{ asset('js/coreui-chartjs.bundle.js') }}"></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
+@endsection
+@section('script')
+    <script>
+         var div = $('.append-contestant');
+			div.hide();
+        $(".contestant").click(function(){
+            // alert('dsadsaadsdsadsadsadsadsa');
+            // var div = $('.append-contestant');
+			// div.empty();
+            $('#contestant-card').show();
+            // var url = $(this).data('url');
+            // $.ajax({
+			//     url: url,
+			//     success:function(data){
+			//         div.append(data);
+			//         $('#contestant-card').show();
+			//     }
+			// });
+        });
+    </script>
 @endsection

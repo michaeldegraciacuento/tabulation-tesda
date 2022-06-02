@@ -11,6 +11,25 @@
             <input type="text" name="name" class="form-control mb-3" placeholder="Name" required>
             <input type="email" name="email" class="form-control mb-3" placeholder="Email" required>
             <input type="password" name="password" class="form-control mb-3" placeholder="Password" required>
+            <div class="row">
+                   <div class="col-6">
+                    <label for="program">Qualification:</label>
+                        <select class="form-control" name="quali_id">
+                                   @foreach($quali as $q)
+                                    <option value="{{$q->id}}">{{$q->quali_name}}</option>
+                                   @endforeach
+                        </select>
+                   </div>
+                   <div class="col-6">
+                   <label for="program">Institution:</label>
+                        <select class="form-control" name="tti_id">
+                                   @foreach($tti as $t)
+                                    <option value="{{$t->id}}">{{$t->tti_abrv}}</option>
+                                   @endforeach     
+                        </select>
+                   </div>
+               </div>
+               <br>
             <select name="role" class="form-control mb-3" id="role_select">
                 <option value="">-- Role(Skip if Role is only User) --</option>
                 @foreach($roles as $i => $role)

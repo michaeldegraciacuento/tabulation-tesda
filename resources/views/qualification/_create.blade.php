@@ -18,7 +18,7 @@
                 <input type="file" class="form-control" name="image" id="image">
 
               </div>
-              <img src="" alt="" id="imageShow" height="120" width="120"style=" border: 1px solid #555;align:left;">
+            
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Save</button>
@@ -27,17 +27,3 @@
       </div>
     </div>
   </div>
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
-  $('document').ready(function () {
-    $("#image").change(function () {
-        if (this.files && this.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#imageShow').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(this.files[0]);
-        }
-    });
-});
-</script>

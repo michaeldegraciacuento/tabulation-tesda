@@ -23,13 +23,13 @@
     </a>
   </li>
   <li class="c-sidebar-nav-item">
-    <a class="c-sidebar-nav-link" href="">
+    <a class="c-sidebar-nav-link" href="{{ route('institution.index') }}">
       <i class="cil-library-building c-sidebar-nav-icon"></i>
       Institution
     </a>
   </li>
   <li class="c-sidebar-nav-item">
-    <a class="c-sidebar-nav-link" href="">
+    <a class="c-sidebar-nav-link" href="{{ route('contestant.index') }}">
       <i class="cil-contact c-sidebar-nav-icon"></i>
       Contestant
     </a>
