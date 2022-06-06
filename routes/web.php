@@ -8,14 +8,15 @@ Route::group(['middleware' => ['auth']],function() {
 
     Route::get('/dashboard','DashboardController@index')->name('dashboard.index');
 
-    Route::group(['middleware' => ['role:admin']],function() { 
+    Route::group(['middleware' => ['role:admin|Judge']],function() { 
 
-        Route::group(['middleware' => ['role:admin']],function() { 
+        Route::group(['middleware' => ['role:admin|Judge']],function() { 
             Route::resource('users','UsersController'); 
             Route::resource('program','ProgramController');
             Route::resource('qualification','QualificationController');   
-            Route::resource('institution','InstitutionController'); 
-            Route::resource('contestant','ContestantController');               
+            Route::resource('institution','InstitutionControlle'); 
+            Route::resource('contestant','ContestantController'); 
+            Route::get('/contestantShow/{tti_id}/{quali_id}','ContestantController@contestantShow');          
         });
     });  
     Route::get('/colors', function () {     return view('dashboard.colors'); });

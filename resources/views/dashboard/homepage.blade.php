@@ -23,7 +23,7 @@
     <div class="card">
             <div class="card-header" style="background-image: url('assets/img/vgd.png');width: 100%;height: 90px; margin-left: auto;margin-right: auto; display: block;">
                 <div class="card mt-3" style="height:30px; opacity: 0.9;">
-                    <strong style="font-size:15px;" class="mt-1 text-center"><strong style="color:ffffff;">VISUAL GRAPHICS DESIGN</strong></strong> 
+                    <strong style="font-size:15px;" class="mt-1 text-center"><strong style="color:ffffff;">{{$getJudge->quali_name}}</strong></strong> 
                 </div>
             </div>
             <div class="row justify-content-end pt-1" >
@@ -40,27 +40,30 @@
     </div>
     <div class="card">
             <div class="card mb-0">
-                <div class="card-header contestant" data-url="">
+               @foreach($getCon as $con)
+                <div class="card-header contestant"  data-tti=".append-contestant-{{ $con->tti_id }}" data-url="{{ URL::to('contestantShow/'.$con->tti_id.'/'.$con->quali_id) }}">
                     <h5 class="mb-0">
                         <div class="row">
                             <div class="col-2">
-                                <img src="{{ asset('assets/img/rtciligan.png') }}" width="45" height="40" alt="logo">
+                                <img src="{{asset('public/'.$con->tti_image) }}" width="45" height="40" alt="logo">
                             </div>
                             <div class="col-8">
                                 <a>
-                                Regional Training Center- Iligan
+                               {{$con->tti_name}}
                                 </a>
                             </div>
                             <div class="col-2 p-0 align-self-end">
                                 <div class="row mb-2"><span class="badge badge-success float-right " style="font-size:10px;">Complete</span></div>
-                                <div class="row"><h6 class="mt-auto bd-highlight float-right" style="font-size:10px;">RTC-Iligan</h6></div>
+                                <div class="row"><h6 class="mt-auto bd-highlight float-right" style="font-size:10px;">{{$con->tti_abrv}}</h6></div>
                             </div>
                         </div>
                     </h5>
                 </div>
                 <!-- append start -->
-                <div class="append-contestant"></div>
+                <div class="append-contestant-{{ $con->tti_id }} "></div>
                 <!-- append end -->
+               @endforeach
+                
             </div>  
     </div>
           
@@ -79,21 +82,24 @@
 @endsection
 @section('script')
     <script>
-         var div = $('.append-contestant');
-			div.hide();
         $(".contestant").click(function(){
-            // alert('dsadsaadsdsadsadsadsadsa');
-            // var div = $('.append-contestant');
-			// div.empty();
-            $('#contestant-card').show();
-            // var url = $(this).data('url');
-            // $.ajax({
-			//     url: url,
-			//     success:function(data){
-			//         div.append(data);
-			//         $('#contestant-card').show();
-			//     }
-			// });
+           
+            var tti = $(this).data('tti');
+            var div = $(tti);
+            $('#contestant-card').removeClass("active");
+            
+			div.empty();
+    
+            var url = $(this).data('url');
+            $.ajax({
+			    url: url,
+			    success:function(data){
+			        div.append(data);
+                    $('#contestant-card').addClass("active"); 
+			        $('#contestant-card').show();
+                    console.log(data);
+			    }
+			});
         });
     </script>
 @endsection

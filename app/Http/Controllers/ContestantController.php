@@ -54,6 +54,7 @@ class ContestantController extends Controller
         $con->con_gender=$request->con_gender;
         $con->tti_id = $request->tti_id;
         $con->quali_id = $request->quali_id;
+
         if( $request->file('con_image') != null){
             $picture = $request->file('con_image');
             $fileName = time() . '.' . $picture->getClientOriginalExtension();
@@ -63,6 +64,11 @@ class ContestantController extends Controller
             $con->con_image = $url;
         }
         $con->save();
+
+        $data=array();
+        $data['status']= "1";
+        Institution::where('id',$request->tti_id)->update($data);
+        
         return redirect()->back()->with('success','Successfully Created Contestant!!');
     }
 
@@ -74,6 +80,7 @@ class ContestantController extends Controller
      */
     public function show(Contestant $contestant)
     {
+
         return view('dashboard._appendContestant',compact('contestant'));
     }
 
@@ -109,5 +116,10 @@ class ContestantController extends Controller
     public function destroy(Contestant $contestant)
     {
         //
+    }
+    public function contestantShow($tti_id, $quali_id)
+    {
+            $getCo=Contestant::where('tti_id',$tti_id)->where('quali_id',$quali_id)->get();
+            return view('dashboard._appendContestant',compact('getCo'));
     }
 }

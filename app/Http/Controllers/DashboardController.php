@@ -11,18 +11,19 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         $userAuth = \Auth::user('quali_id');
+
+        $getJudge=User::join('institutions','institutions.id','users.tti_id')
+                        ->join('qualifications','qualifications.id','users.quali_id')
+                        ->select('institutions.tti_name','users.tti_id','users.name','qualifications.quali_name','users.quali_id')
+                        ->first();  
+
         $contestants=Contestant::get();
-                           
-        foreach($contestants as $dd){
-            if($dd->quali_id == $userAuth->quali_id){
-                $sortContestant = Contestant::join('institutions','institutions.id','contestants.tti_id')
-                ->select('institutions.tti_name','institutions.tti_abrv','contestants.con_name','contestants.con_image','contestants.con_gender','contestants.con_age')              
-                ->where('quali_id','=',$userAuth->quali_id)
-                ->get();
-            }  
-        }
-         $sortContestant->groupBy('tti_name');          
-        return view('dashboard.homepage',compact('sortContestant'));
+                 
+        $getCon=Contestant::join('institutions','institutions.id','contestants.tti_id')
+                    ->where('quali_id',$getJudge->quali_id)
+                    ->get()
+                    ->keyBy('tti_name');
+       return view('dashboard.homepage',compact('getCon','getJudge'));
     }
 
     public function search(Request $request)

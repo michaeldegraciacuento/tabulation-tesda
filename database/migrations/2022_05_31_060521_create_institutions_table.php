@@ -18,6 +18,7 @@ class CreateInstitutionsTable extends Migration
             $table->string('tti_name');
             $table->string('tti_abrv');
             $table->string('tti_image');
+            $table->string('status');
             $table->timestamps();
         });
     }
