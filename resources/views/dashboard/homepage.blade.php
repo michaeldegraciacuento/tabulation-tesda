@@ -60,7 +60,7 @@
                     </h5>
                 </div>
                 <!-- append start -->
-                <div class="append-contestant-{{ $con->tti_id }} "></div>
+                <div class="append-contestant-{{ $con->tti_id }}"></div>
                 <!-- append end -->
                @endforeach
                 
@@ -81,25 +81,29 @@
     <script src="{{ asset('js/main.js') }}" defer></script>
 @endsection
 @section('script')
-    <script>
-        $(".contestant").click(function(){
-           
-            var tti = $(this).data('tti');
-            var div = $(tti);
-            $('#contestant-card').removeClass("active");
-            
-			div.empty();
-    
+<script>
+    $(".contestant").click(function(){
+        var tti = $(this).data('tti');
+        var div = $(tti);
+      
+        if($('*').hasClass('activeCon')){
+            div.removeClass('activeCon');
+            div.empty();
+        }else{
+            div.empty();
             var url = $(this).data('url');
             $.ajax({
-			    url: url,
-			    success:function(data){
-			        div.append(data);
-                    $('#contestant-card').addClass("active"); 
-			        $('#contestant-card').show();
-                    console.log(data);
-			    }
-			});
-        });
-    </script>
+                url: url,
+                success:function(data){
+                    div.append(data);
+                    div.addClass("activeCon");
+                    $('.contestant').addClass("showCon");
+                    $('#contestant-card').show();
+                
+                }
+            });
+        }
+      
+    });
+</script>
 @endsection
