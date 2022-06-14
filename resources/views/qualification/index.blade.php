@@ -55,7 +55,7 @@
                                                             <i class="cil-pencil"></i>
                                                             &nbsp;Update
                                                         </button>
-                                                        <a type="button" href=""class="dropdown-item btn" data-url="">
+                                                        <a type="button" href="{{ URL::to('/viewCrits/'.$qualis->id)}}"class="dropdown-item btn" data-url="">
                                                             <i class="cil-magnifying-glass"></i>
                                                             &nbsp;View Criteria
                                                         </a>

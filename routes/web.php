@@ -10,11 +10,15 @@ Route::group(['middleware' => ['auth']],function() {
 
     Route::group(['middleware' => ['role:admin|Judge']],function() { 
 
-        Route::group(['middleware' => ['role:admin|Judge']],function() { 
+        Route::group(['middleware' => ['role:admin|Judge']],function() {
+            Route::get('/viewCrits/{quali_id}', 'CriteriaController@index');
+            Route::post('/addCriteria', 'CriteriaController@addCriteria');
+            Route::get('/viewGuide/{quali_id}/{quide_id}', 'GuidelineController@index');
+
             Route::resource('users','UsersController'); 
             Route::resource('program','ProgramController');
             Route::resource('qualification','QualificationController');   
-            Route::resource('institution','InstitutionControlle'); 
+            Route::resource('institution','InstitutionController'); 
             Route::resource('contestant','ContestantController'); 
             Route::get('/contestantShow/{tti_id}/{quali_id}','ContestantController@contestantShow');          
         });

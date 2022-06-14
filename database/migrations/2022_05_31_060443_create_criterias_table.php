@@ -16,8 +16,8 @@ class CreateCriteriasTable extends Migration
         Schema::create('criterias', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('quali_id');
-            $table->string('crit_name');
-            $table->string('crit_percentage');
+            $table->string('crit_name')->nullable();
+            $table->string('crit_total');
             $table->timestamps();
 
             $table->foreign('quali_id')

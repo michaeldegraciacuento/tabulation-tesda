@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Criteria;
+use App\Models\{User,Qualification,Criteria};
 use Illuminate\Http\Request;
 
 class CriteriaController extends Controller
@@ -12,9 +12,22 @@ class CriteriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($quali_id)
     {
-        //
+        $crit = Criteria::where('quali_id', $quali_id)->get();
+        $quali = Qualification::where('id', $quali_id)->first();
+        $sum = Criteria::select('crit_total')->where('quali_id', $quali_id)->sum('crit_total');
+        
+        return view('criteria.index',compact('crit', 'quali','sum'));
+    }
+    public function addCriteria(Request $request)
+    {
+        $criteria = new Criteria();
+        $criteria->crit_name = $request->crit_name;
+        $criteria->crit_total = $request->crit_total;
+        $criteria->quali_id = $request->quali_id;
+        $criteria->save();
+        return redirect()->back()->with('success','Successfully Created Criteria');
     }
 
     /**

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog " role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">TTI Name</h5>
@@ -83,6 +83,7 @@
 @section('script')
 <script>
     $(".contestant").click(function(){
+ 
         var tti = $(this).data('tti');
         var div = $(tti);
       
@@ -97,13 +98,26 @@
                 success:function(data){
                     div.append(data);
                     div.addClass("activeCon");
-                    $('.contestant').addClass("showCon");
-                    $('#contestant-card').show();
-                
+                    var cc = $('#contestant-card').data('tti');
+                    var cc_show = $(cc);
+                    cc_show.show();
                 }
             });
         }
       
     });
+
+    $(".add_contestant_row").click(function(){
+        var html = '';
+        html += '<div id="inputFormRow">';
+        html += '<div class="input-group mb-3">';
+        html += '<input type="text" name="title[]" class="form-control m-input" placeholder="Enter title" autocomplete="off">';
+        html += '<div class="input-group-append">';
+        html += '<button id="removeRow" type="button" class="btn btn-danger">Remove</button>';
+        html += '</div>';
+        html += '</div>';
+
+        $('#newRow').append(html);
+});
 </script>
 @endsection

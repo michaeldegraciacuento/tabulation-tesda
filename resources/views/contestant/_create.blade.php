@@ -11,12 +11,27 @@
               </div>
               <div class="modal-body">
 
-                <label for="program">Name:</label>
-                <input type="text" required class="form-control" name="con_name">
-                <label for="program">Age:</label>
-                <input type="text" required class="form-control" name="con_age">
-                <label for="program">Gender:</label>
-                <input type="text" required class="form-control" name="con_gender">
+                <div class="row contestant_row">
+                  <div class="col-6">
+                    <label for="program">Name:</label>
+                    <input type="text" required class="form-control" name="con_name"></div>
+                  <div class="col-6">
+                    <label for="program">Image:</label>
+                    <input type="file" class="form-control" name="con_image" id="image">
+                  </div>
+                  <div class="col-6">
+                    <label for="program">Age:</label>
+                    <input type="text" required class="form-control" name="con_age"></div>
+                  <div class="col-6">
+                    <label for="program">Gender:</label>
+                    <input type="text" required class="form-control" name="con_gender">
+                  </div>
+                </div>
+                <div id="newRow"></div>
+                <a class="add_contestant_row">
+                    <button type="button" id="add_contestant_row"class="btn btn-primary btn-sm mt-2 float-right ">Add</button>
+                </a>
+                <hr class="mt-5">
                <div class="row">
                    <div class="col-6">
                     <label for="program">Qualification:</label>
@@ -36,8 +51,7 @@
                    </div>
                </div>
 
-                <label for="program">Image:</label>
-                <input type="file" class="form-control" name="con_image" id="image">
+              
 
               </div>
             
